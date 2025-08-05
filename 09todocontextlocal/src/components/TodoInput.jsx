@@ -17,7 +17,7 @@ function TodoInput() {
     addTodo({
       id: Date.now(),
       text: text.trim(),
-      completed: true
+      completed: false
     });
     setText('');
     inputRef.current.value = '';
@@ -31,7 +31,9 @@ function TodoInput() {
         className="border-none bg-slate-600 px-4 py-2 rounded-l-md w-full focus:outline-none focus:bg-slate-700 focus:border-none"
         onChange={(e) => setText(e.target.value)}
         ref={inputRef}
+        onKeyDown={(e) => e.key === 'Enter' && addNewTodo()}
       />
+      
       <button
       className="bg-green-600 hover:bg-green-700 w-20 text-white p-2 rounded-r-md"
       onClick={addNewTodo}

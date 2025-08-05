@@ -4,7 +4,6 @@ import { TodoContextProvider } from './context'
 import {TodoInput, Todo} from './components'
 
 function App() {
-  const t = {id: 1, text: 'Todo Message cdfjbjfef  efhbehfbwef efhwehfbwhef whehwfbehbfwef wehfhwbefwe', completed: false};
 
   const [todos, setTodos] = useState([]);
 
@@ -48,7 +47,11 @@ function App() {
         Manage Your Todos
       </h1>
       <TodoInput />
-      <Todo todo={t} />
+      {
+        todos.map(todo => (
+          <Todo key={todo.id} todo={todo} />
+        ))
+      }
     </TodoContextProvider>
   )
 }
